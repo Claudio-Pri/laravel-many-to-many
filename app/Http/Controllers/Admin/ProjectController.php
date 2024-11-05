@@ -35,7 +35,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
         
     }
 
@@ -50,7 +51,8 @@ class ProjectController extends Controller
             'title' => 'required|min:3|max:128',
             'thumb' => 'nullable|url',
             'description' => 'required|min:3|max:4096',
-            'type_id'=>'nullable|exists:types,id',
+            'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|array|exists:technologies,id',
 
         ]);
         $data = $request->all();
@@ -61,6 +63,10 @@ class ProjectController extends Controller
         // dd($data);
 
         $project = Project::create($data);
+
+        // sincronizzo l'array ['technologies']
+        $project->technologies()->sync($data['technologies'] ?? []);
+
         return redirect()->route('admin.projects.show', ['project' => $project->id]);
     }
 
@@ -80,8 +86,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.edit', compact('project','types'));
+        return view('admin.projects.edit', compact('project','types','technologies'));
     }
 
     /**
@@ -94,6 +101,7 @@ class ProjectController extends Controller
             'thumb' => 'nullable|url',
             'description' => 'required|min:3|max:4096',
             'type_id'=>'nullable|exists:types,id',
+            'technologies' => 'nullable|array|exists:technologies,id',
 
         ]);
         $data = $request->all();
@@ -103,6 +111,9 @@ class ProjectController extends Controller
 
         // dd($data);
         $project->update($data);
+
+        $project->technologies()->sync($data['technologies'] ?? []);
+
         return redirect()->route('admin.projects.show', ['project' => $project->id]);
     }
 
