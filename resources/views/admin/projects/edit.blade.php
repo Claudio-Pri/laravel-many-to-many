@@ -47,6 +47,26 @@
                     value="{{ $project->description }}"
                     placeholder="Inserisci la descrizione...">
                 </div>
+
+                <div class="mb-3">
+                  <label for="type_id" class="form-label">Categoria</label>
+                  <select name="type_id" id="type_id" class="form-control">
+                    <option 
+                    @if (old('type_id', $project->type_id) == null)
+                      selected
+                    @endif
+                    >Seleziona una categoria...</option>
+                    @foreach ($types as $type)
+                      <option
+                      @if (old('type_id', $project->type_id) == $type->id)
+                        selected
+                      @endif
+
+                      value="{{ $type->id }}">{{ $type->title }}</option>
+                      
+                    @endforeach
+                  </select>
+                </div>
                 
                 <button type="submit" class="btn btn-warning">+ Modifica</button>
               </form> 

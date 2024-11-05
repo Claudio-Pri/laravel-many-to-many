@@ -15,7 +15,19 @@
             <div class="col">
                 <ul>
                   <li>
-                    Titolo: {{ $technology->title }}
+                    Nome: {{ $technology->title }}
+                  </li>
+                  <li>
+                    Progetti collegati:
+                    <ul>
+                      @foreach ($technology->projects as $project )
+                        <li>
+                          <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">
+                            {{ $project->title }}
+                          </a>
+                        </li>
+                      @endforeach
+                    </ul>
                   </li>
                 </ul>
                 <div>

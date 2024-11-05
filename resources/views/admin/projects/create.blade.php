@@ -44,10 +44,20 @@
                     required
                     placeholder="Inserisci la descrizione..."></textarea>
                 </div>
+                <div class="mb-3">
+                  <label for="type_id" class="form-label">Categoria</label>
+                  <select name="type_id" id="type_id" class="form-control">
+                    <option selected disabled>Seleziona una categoria...</option>
+                    @foreach ($types as $type)
+                      <option value="{{ $type->id }}">{{ $type->title }}</option>
+                      
+                    @endforeach
+                  </select>
+                </div>
                 
-                <button type="submit" class="btn btn-success">+ Aggiungi</button>
+                <button type="submit" class="btn btn-success mb-3">+ Aggiungi</button>
               </form> 
-              <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Annulla</a>
+              <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary mb-3">Annulla</a>
             </div>
         </div>
     </div>

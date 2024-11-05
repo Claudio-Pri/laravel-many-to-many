@@ -18,6 +18,7 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Titolo</th>
+                        <th scope="col">Progetti collegati</th>
                         <th scope="col">Azioni</th>
                       </tr>
                     </thead>
@@ -26,6 +27,9 @@
                       <tr>
                         <th scope="row">{{ $technology->id }}</th>
                         <td>{{ $technology->title }}</td>
+                        <td>
+                          {{ $technology->projects()->count() }}
+                        </td>
                         <td>
                             <a href="{{ route('admin.technologies.show', $technology->id) }}" class="btn btn-success my-1">Vedi</a>
                             <a href="{{ route('admin.technologies.edit', $technology->id) }}" class="btn btn-outline-success my-1">Modifica</a>
