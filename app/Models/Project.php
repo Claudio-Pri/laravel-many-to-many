@@ -13,6 +13,7 @@ class Project extends Model
         'title',
         'slug',
         'url',
+        'cover',
         'description',
         'type_id'
     ];

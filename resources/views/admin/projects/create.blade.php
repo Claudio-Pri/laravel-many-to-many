@@ -42,7 +42,7 @@
                     class="form-control"
                     id="cover"
                     name="cover"
-                    placeholder="Inserisci il link al progetto...">
+                    placeholder="Inserisci un'immagine...">
                 </div>
 
                 <div class="mb-3">
