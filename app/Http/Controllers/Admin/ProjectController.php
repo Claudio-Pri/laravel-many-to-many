@@ -68,7 +68,10 @@ class ProjectController extends Controller
 
         // Salvataggio file
         $coverPath = Storage::put('uploads', $data['cover']);
+        
         // dd($coverPath);
+
+        $data['cover'] = $coverPath;
 
         $project = Project::create($data);
 
