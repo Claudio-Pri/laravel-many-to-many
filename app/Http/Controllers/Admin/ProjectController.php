@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 //per slug da documentazione laravel
 // use Illuminate\Support\Str;
 
+// Helpers
+use Illuminate\Support\Facades\Storage;
+
 //Models
 use App\Models\{
     Project,
@@ -62,6 +65,10 @@ class ProjectController extends Controller
         $data['slug'] = str()->slug($data['title']);
 
         // dd($data);
+
+        // Salvataggio file
+        $coverPath = Storage::put('uploads', $data['cover']);
+        // dd($coverPath);
 
         $project = Project::create($data);
 
