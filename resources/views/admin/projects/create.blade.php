@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-              <form action="{{ route('admin.projects.store') }}" method="POST">
+              <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                   <label for="title" class="form-label">Titolo <span class="text-danger">*</span></label>
@@ -34,6 +34,17 @@
                     name="url"
                     placeholder="Inserisci il link al progetto...">
                 </div>
+                {{-- immagine --}}
+                <div class="mb-3">
+                  <label for="cover" class="form-label">Immagine</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="cover"
+                    name="cover"
+                    placeholder="Inserisci il link al progetto...">
+                </div>
+
                 <div class="mb-3">
                   <label for="description" class="form-label">Descrizione <span class="text-danger">*</span></label>
                   <textarea 

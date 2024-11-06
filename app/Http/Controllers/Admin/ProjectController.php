@@ -49,7 +49,8 @@ class ProjectController extends Controller
         //validazione dati
         $request->validate([
             'title' => 'required|min:3|max:128',
-            'thumb' => 'nullable|url',
+            'url' => 'nullable|url',
+            'cover' => 'nullable|file|max:1024',
             'description' => 'required|min:3|max:4096',
             'type_id' => 'nullable|exists:types,id',
             'technologies' => 'nullable|array|exists:technologies,id',
@@ -98,7 +99,7 @@ class ProjectController extends Controller
     {
         $request->validate([
             'title' => 'required|min:3|max:128',
-            'thumb' => 'nullable|url',
+            'url' => 'nullable|url',
             'description' => 'required|min:3|max:4096',
             'type_id'=>'nullable|exists:types,id',
             'technologies' => 'nullable|array|exists:technologies,id',

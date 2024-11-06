@@ -37,6 +37,17 @@
                     value="{{ $project->url }}"
                     placeholder="Inserisci il link al progetto...">
                 </div>
+                {{-- immagine --}}
+                {{-- <div class="mb-3">
+                  <label for="url" class="form-label">Url</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="url"
+                    name="url"
+                    value="{{ $project->url }}"
+                    placeholder="Inserisci il link al progetto...">
+                </div> --}}
                 <div class="mb-3">
                   <label for="description" class="form-label">Descrizione <span class="text-danger">*</span></label>
                   <input 
